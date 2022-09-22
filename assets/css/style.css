@@ -1,0 +1,156 @@
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a.active.focus,
+a.active:focus,
+a.focus,
+a:active.focus,
+a:active:focus,
+a:focus,
+button.active.focus,
+button.active:focus,
+button.focus,
+button:active.focus,
+button:active:focus,
+button:focus,
+a:hover,
+button:hover {
+  -webkit-transition: .2s;
+  transition: .2s;
+  outline: 0!important;
+  outline-color: transparent!important;
+  outline-width: 0!important;
+  outline-style: none !important;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+}
+select,
+input,
+textarea,
+hr,
+fieldset {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  resize: none;
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='checkbox'],
+input[type="radio"] {
+  display: none;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+table,
+tr,
+th {
+  border-collapse: collapse;
+  border: none;
+}
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+body.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+body.flex .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+body.inline {
+  display: inline-block;
+}
+body.inline > * {
+  display: inline-block;
+}
+body.inline .col {
+  display: inline-block;
+}
+body.float .col {
+  float: left;
+}
+body.inline,
+body.float {
+  position: relative;
+}
+body.inline main,
+body.float main {
+  padding-bottom: 260px;
+  margin-bottom: 0;
+}
+body.inline footer,
+body.float footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+header {
+  height: 100px;
+  width: 100%;
+  background-color: blue;
+}
+main {
+  margin: 160px 0;
+  width: 100%;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1520px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 2400px;
+}
+.col {
+  background-color: pink;
+  width: 30%;
+  margin-right: 3.5%;
+  margin: 0 25px;
+  height: 100%;
+}
+.col:last-child {
+  margin-right: 0;
+}
+footer {
+  height: 100px;
+  background-color: green;
+  margin-top: auto;
+  width: 100%;
+}
