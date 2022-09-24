@@ -91,25 +91,40 @@ body.flex .container {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+body.flex .cols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
 body.inline {
   display: inline-block;
 }
 body.inline > * {
   display: inline-block;
 }
+body.inline .cols {
+  text-align: justify;
+}
 body.inline .col {
   display: inline-block;
+}
+body.float {
+  margin-left: 2px;
 }
 body.float .col {
   float: left;
 }
 body.inline,
 body.float {
+  font-size: 0;
   position: relative;
 }
 body.inline main,
 body.float main {
-  padding-bottom: 260px;
+  height: calc(100vh - 100px);
+  padding-bottom: 100px;
   margin-bottom: 0;
 }
 body.inline footer,
@@ -124,29 +139,39 @@ header {
   background-color: blue;
 }
 main {
-  margin: 160px 0;
   width: 100%;
+  height: calc(100vh - 200px);
 }
 .container {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 100%;
   max-width: 1520px;
   padding-right: 30px;
   padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
-  height: 2400px;
+}
+.cols {
+  height: 100%;
+  min-height: 100%;
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .col {
   background-color: pink;
-  width: 30%;
-  margin-right: 3.5%;
-  margin: 0 25px;
+  width: calc(100% / 3 - 40px);
+  margin: 0 20px;
   height: 100%;
+  min-height: 100%;
 }
-.col:last-child {
-  margin-right: 0;
+.col:first-child {
+  background-color: red;
+}
+.col:nth-child(2) {
+  background-color: brown;
 }
 footer {
   height: 100px;
