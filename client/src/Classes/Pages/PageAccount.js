@@ -1,6 +1,9 @@
 import Page from "./Page.js";
 import UsersList from "../UsersList.js";
 
+import Storage from "../Storage/Storage.js";
+const loginUser = new Storage('loginUser');
+
 export default class PageAccount extends Page {
     constructor() {
         super();
@@ -18,6 +21,12 @@ export default class PageAccount extends Page {
             </div>
         </section>
         `;
-        UsersList.render('.account-wrap');
+
+        const UsersListInstance = new UsersList('.account-wrap');
+        if (loginUser.get()) {
+            UsersListInstance.renderUserList();
+        } else {
+            UsersListInstance.renderError();
+        }
     }
 }
