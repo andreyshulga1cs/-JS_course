@@ -69,3 +69,7 @@ th {
   border-collapse: collapse;
   border: none;
 }
+*:hover {
+  -webkit-transition: .2s;
+  transition: .2s;
+}
