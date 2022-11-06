@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>JAVA SCRIPT</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="src/assets/css/style.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<nav class="header-menu">
+				<ul>
+					<li>
+						<a href="#">Homepage</a>
+					</li>
+					<li>
+						<a href="#/about-us">About us</a>
+					</li>
+				</ul>
+			</nav>
+			<input class="downolad-file" type="file">
+			<div class="user-buttons"></div>
+		</div>
+	</header>
+	<main>
+		
+	</main>
+	<footer></footer>
+	<div class="popup">
+		<div class="popup__overlay"></div>
+		<div class="popup__window">
+			<div class="close"></div>
+			<div class="title"></div>
+		</div>
+	</div>
+	<div class="popup-form register">
+		<div class="popup__overlay"></div>
+		<div class="popup__window">
+			<div class="close"></div>
+			<form id="form-register">
+				<h3>Register</h3>
+				<div class="input-wrap">
+					<h4>Email*:</h4>
+					<input required type="email" name="email" data-reg='^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$' data-error-title='Email is incorrect!'>
+				</div>
+				<div class="input-wrap">
+					<h4>Password*:</h4>
+					<input required type="text" name="password" data-reg='(?=.*\d)(?=.*[a-z]).{9,}' data-error-title='Password should include letters, numbers and consist of >8 symbols!'>
+				</div>
+				<div class="input-wrap">
+					<h4>Repeat password*:</h4>
+					<input required type="text" name="password2" data-reg='(?=.*\d)(?=.*[a-z]).{9,}' data-error-title='Password should include letters, numbers and consist of >8 symbols!'>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="popup-form login">
+		<div class="popup__overlay"></div>
+		<div class="popup__window">
+			<div class="close"></div>
+			<form id="form-login">
+				<h3>Login</h3>
+				<div class="input-wrap">
+					<h4>Email:</h4>
+					<input type="email" name="email" data-reg='^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$' data-error-title='Email is incorrect!'>
+				</div>
+				<div class="input-wrap">
+					<h4>Password:</h4>
+					<input type="text" name="password" data-reg='(?=.*\d)(?=.*[a-z]).{9,}' data-error-title='Password should include letters, numbers and consist of >8 symbols!'>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="popup-form edit">
+		<div class="popup__overlay"></div>
+		<div class="popup__window">
+			<div class="close"></div>
+			<form id="form-edit">
+				<h3>Edit</h3>
+				<div class="input-wrap">
+					<h4>Age:</h4>
+					<input type="number" name="age">
+				</div>
+				<div class="input-wrap">
+					<h4>Sex:</h4>
+					<label class="checkbox-wrap">
+						<span>Male</span>
+						<input type="radio" name="sex" value="Male">
+						<div class="checkbox-el"></div>
+					</label>
+					<label class="checkbox-wrap">
+						<span>Female</span>
+						<input type="radio" name="sex" value="Female">
+						<div class="checkbox-el"></div>
+					</label>
+					<label class="checkbox-wrap">
+						<span>Non-binary</span>
+						<input type="radio" name="sex" value="Non binary">
+						<div class="checkbox-el"></div>
+					</label>
+				</div>
+				<div class="input-wrap">
+					<h4>Address:</h4>
+					<input type="text" name="address">
+				</div>
+				<div class="input-wrap">
+					<h4>Telephone*:</h4>
+					<input required type="tel" name="tel" data-reg='^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$' data-error-title='Invalid phone number!'>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="module" src="src/app.js"></script>
+</body>
+</html>
