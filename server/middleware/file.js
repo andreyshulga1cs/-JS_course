@@ -14,8 +14,9 @@ const fileFilter = (req, file, cb) => {
     if (types.includes(file.mimetype)) {
         cb(null, true)
     } else {
-        cb(null, false)
+        cb(new Error(`Allowed formats - ${types.join(", ")} `))
     }
+    // cb(null, true)
 }
 
 export default multer({storage, fileFilter})

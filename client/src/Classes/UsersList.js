@@ -1,41 +1,31 @@
 import UsersListItem from "./UsersListItem.js";
-import StorageUsers from "./Storage/StorageUsers.js";
-import Storage from "./Storage/Storage.js";
+import DbUsers from "./db/DbUsers.js";
 
-const UsersStorage = new StorageUsers();
-const loginUser = new Storage('loginUser');
-
-class UsersList {
-    constructor() {
-        if (!UsersList._instance) {
-            UsersList._instance = this;
-        }
-        return UsersList._instance;
+export default class UsersList {
+    constructor(selector) {
+        this.selector = selector;
     }
-    render(selector) {
-        const el = document.querySelector(selector);
+    renderUserList() {
+        let el = document.querySelector(this.selector);
         if (el) {
             let html = '<div class="preloader">Загрузка</div>';
-            if (loginUser.get()) {
-                UsersStorage.get().then((users) => {
-                    html = '';
-                    for (let user in users) {
-                        
-                        html += new UsersListItem({[user]: users[user]}).render();
-                    }
-                }).catch((error) => {
-                    html = error;
-                }).finally(() => {
-                    el.innerHTML = html;
-                })
-            } else {
-                html = 'You cant look throgh the page!';
-            }
-            el.innerHTML = html;
+                
+            DbUsers.getUsers().then(res => {
+                html = '';
+                res.forEach(user => {
+                    html += new UsersListItem(user).render();
+                });
+            }).catch(error => {
+                html = error;
+            }).then(() => {
+                el.innerHTML = html;
+            });
         }
-        console.log(2);
+    }
+    renderError() {
+        let el = document.querySelector(this.selector);
+        if (el) {
+            el.innerHTML = 'You cant look throgh the page!';
+        }
     }
 }
-
-const UsersListInstance = new UsersList();
-export default  UsersListInstance;

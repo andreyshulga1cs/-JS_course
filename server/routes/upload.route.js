@@ -1,16 +1,16 @@
 import {Router} from 'express';
 import fileMiddleware from '../middleware/file.js';
 
-const router = Router();
+const uploadRouter = Router();
 
-router.post('/upload', fileMiddleware.single('avatar'), (req, res) => {
+uploadRouter.post('/upload', fileMiddleware.single('avatar'), (req, res) => {
     try {
         if (req.file) {
             res.json(req.file);
         }
     } catch (error) {
-        console.log(error);
+        res.json(error);
     }
 })
 
-export default router;
+export default uploadRouter;
