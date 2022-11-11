@@ -1,9 +1,9 @@
 import {Router} from 'express';
-import fileMiddleware from '../middleware/file.js';
+import fileMiddleware from '../middleware/file';
 
 const uploadRouter = Router();
 
-uploadRouter.post('/upload', fileMiddleware.single('avatar'), (req, res) => {
+uploadRouter.post('/upload', fileMiddleware.single('avatar'), (req: any, res: any) => {
     try {
         if (req.file) {
             res.json(req.file);

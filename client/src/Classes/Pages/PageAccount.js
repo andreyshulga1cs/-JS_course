@@ -1,5 +1,5 @@
 import Page from "./Page.js";
-import UsersList from "../UsersList.js";
+import UsersList from "../Users/UsersList.js";
 
 import Storage from "../Storage/Storage.js";
 const loginUser = new Storage('loginUser');

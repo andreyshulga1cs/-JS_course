@@ -3,7 +3,7 @@ import {SERVER_API_URL, SERVER_URL} from '../../Services/constans.js';
 import Popup from '../Popup.js';
 import DbUsers from "../db/DbUsers.js";
 import Form from "./Form.js";
-import UsersList from "../UsersList.js";
+import UsersList from "../Users/UsersList.js";
 const UsersListInstance = new UsersList('.account-wrap');
 
 const popup = new Popup('.popup');

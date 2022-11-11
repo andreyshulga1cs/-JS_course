@@ -1,4 +1,4 @@
-import Storage from "./Storage/Storage.js";
+import Storage from "../Storage/Storage.js";
 
 const loginUser = new Storage('loginUser');
 

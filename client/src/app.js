@@ -4,16 +4,14 @@ import './router.js';
 
 import DbUsers from "./Classes/db/DbUsers.js";
 
-import {SERVER_API_URL} from "./Services/constans.js";
-
 import Popup from "./Classes/Popup.js";
-import UserStatus from "./Classes/UserStatus.js";
+import UserStatus from "./Classes/Users/UserStatus.js";
 
 import FormRegister from "./Classes/Forms/FormRegister.js";
 import FormLogin from "./Classes/Forms/FormLogin.js";
 import FormEdit from "./Classes/Forms/FormEdit.js";
 
-import UsersList from "./Classes/UsersList.js";
+import UsersList from "./Classes/Users/UsersList.js";
 const UsersListInstance = new UsersList('.account-wrap');
 
 import Storage from "./Classes/Storage/Storage.js";
@@ -69,49 +67,35 @@ document.addEventListener('click', e => {
         }
     }
 });
+
+UserStatus.setInitialHeaderButtons();
 DbUsers.getUsers().then(res => {
+    console.log(1);
     console.log(res);
 }).catch(error => {
+    console.log(2);
     console.log(error);
 });
-UserStatus.setInitialHeaderButtons();
 
 
-// const db = DbUsers;
+// let url = 'http://localhost:5000/uploads/2022-11-10T16-41-19.257Z-105897632-1557241558937avatar-e1541360922907.jpg';
 
-// const fd = {
-//     "email": "gegeg3@sdaf.com",
-//     "tel": "3377596968",
-//     "age": "13",
-//     "password": "123453678d",
-// };
-// db.createUser(fd).then(res => {
-//     console.log(res);
-// }).catch(error => {
-//     console.log(error);
-// })
+// const getBase64FromUrl = async (url) => {
+//     const data = await fetch(url);
+//     const blob = await data.blob();
+//     return new Promise((resolve) => {
+//         const reader = new FileReader();
+//         reader.readAsDataURL(blob); 
+//         reader.onloadend = () => {
+//             const base64data = reader.result;   
+//             resolve(base64data);
+//         }
+//     });
+// }
+  
+// getBase64FromUrl(url).then(console.log);
 
-// db.getUsers().then(res => {
-//     console.log(res);
-// }).catch(error => {
-//     console.log(error);
-// })
-
-// db.getUserByEmail("rddr234@gmail.com").then(res => {
-//     console.log(res);
-// }).catch(error => {
-//     console.log(error);
-// })
-
-// let ggg = {age: 7, password: '2415mfdskf', sex: 'male', tel: '847192'};
-// db.updateUserByEmail("rddr2@gmail.com", ggg).then(res => {
-//     console.log(res);
-// }).catch(error => {
-//     console.log(error);
-// })
-
-// db.deleteUserByEmail("rddr23456@gmail.com").then(res => {
-//     console.log(res);
-// }).catch(error => {
-//     console.log(error);
-// })
+// toDataUrl(url, function(myBase64) {
+//     console.log(myBase64); // myBase64 is the base64 string
+// });
+// console.log(toDataUrl(url));

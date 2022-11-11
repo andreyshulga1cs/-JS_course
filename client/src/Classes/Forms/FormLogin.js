@@ -1,9 +1,9 @@
 import Popup from '../Popup.js';
 import Form from "./Form.js";
-import UserStatus from "../UserStatus.js";
+import UserStatus from "../Users/UserStatus.js";
 import DbUsers from "../db/DbUsers.js";
 
-import UsersList from "../UsersList.js";
+import UsersList from "../Users/UsersList.js";
 const UsersListInstance = new UsersList('.account-wrap');
 
 const popup = new Popup('.popup');
@@ -19,7 +19,6 @@ export default class FormLogin extends Form {
 
         if (this.isValid) {
             DbUsers.getUserByEmail(user.email).then(res => {
-                console.log(res);
                 if (res.password === user.password) {
                     popup.open('You are logged in!');
 

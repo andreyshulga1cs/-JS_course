@@ -1,5 +1,5 @@
 import UsersListItem from "./UsersListItem.js";
-import DbUsers from "./db/DbUsers.js";
+import DbUsers from "../db/DbUsers.js";
 
 export default class UsersList {
     constructor(selector) {
@@ -12,6 +12,8 @@ export default class UsersList {
                 
             DbUsers.getUsers().then(res => {
                 html = '';
+                res.sort((a, b) => a.id - b.id);
+
                 res.forEach(user => {
                     html += new UsersListItem(user).render();
                 });
