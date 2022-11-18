@@ -1,5 +1,3 @@
-
-
 import './router.js';
 
 import DbUsers from "./Classes/db/DbUsers.js";
@@ -77,6 +75,13 @@ DbUsers.getUsers().then(res => {
     console.log(error);
 });
 
+// DbUsers.getUserByEmail('1@gmail.com').then(res => {
+//     console.log(1);
+//     console.log(res);
+// }).catch(error => {
+//     console.log(2);
+//     console.log(error);
+// });
 
 // let url = 'http://localhost:5000/uploads/2022-11-10T16-41-19.257Z-105897632-1557241558937avatar-e1541360922907.jpg';
 

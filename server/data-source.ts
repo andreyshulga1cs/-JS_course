@@ -1,5 +1,5 @@
 import "reflect-metadata"
-import { User } from "./dbEntities/User"
+import User from "./dbEntities/User"
 import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({

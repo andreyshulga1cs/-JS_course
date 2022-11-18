@@ -1,6 +1,6 @@
 import Storage from "../Storage/Storage.js";
 
-const loginUser = new Storage('loginUser');
+const sotrageToken = new Storage('token');
 
 class UserStatus {
     constructor() {
@@ -9,19 +9,20 @@ class UserStatus {
 
     setInitialHeaderButtons() {
         let html;
-        if (loginUser.get()) {
-            html = `<a class="button2" href="#/account">${loginUser.get()}</a><div class="button logout-button">Logout</div>`;
+        const token = sotrageToken.get();
+        if (token) {
+            html = `<a class="button2" href="#/account">${token[0]}</a><div class="button logout-button">Logout</div>`;
         } else {
             html = `<div class="button login-button">Login</div><div class="button register-button">Register</div>`;
         }
         this.buttonsWrap.innerHTML = html;
     }
-    login(userEmail) {
-        loginUser.set(userEmail);
-        this.buttonsWrap.innerHTML = `<a class="button2" href="#/account">${userEmail}</a><div class="button logout-button">Logout</div>`;
+    login(token) {
+        sotrageToken.set(token);
+        this.buttonsWrap.innerHTML = `<a class="button2" href="#/account">${token[0]}</a><div class="button logout-button">Logout</div>`;
     }
     logout() {
-        loginUser.set(null);
+        sotrageToken.set(null);
         this.buttonsWrap.innerHTML = `<div class="button login-button">Login</div><div class="button register-button">Register</div>`;
     }
 } 

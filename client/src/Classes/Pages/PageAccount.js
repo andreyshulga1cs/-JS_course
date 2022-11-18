@@ -2,7 +2,7 @@ import Page from "./Page.js";
 import UsersList from "../Users/UsersList.js";
 
 import Storage from "../Storage/Storage.js";
-const loginUser = new Storage('loginUser');
+const sotrageToken = new Storage('token');
 
 export default class PageAccount extends Page {
     constructor() {
@@ -23,7 +23,7 @@ export default class PageAccount extends Page {
         `;
 
         const UsersListInstance = new UsersList('.account-wrap');
-        if (loginUser.get()) {
+        if (sotrageToken.get()) {
             UsersListInstance.renderUserList();
         } else {
             UsersListInstance.renderError();

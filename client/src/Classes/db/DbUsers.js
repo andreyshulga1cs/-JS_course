@@ -1,6 +1,14 @@
 import {SERVER_API_URL} from '../../Services/constans.js';
 
 class DbUsers {
+    async loginUser(data) {
+        return await axios.post(SERVER_API_URL + '/login-user', JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
+    }
     async createUser(data) {
         await axios.post(SERVER_API_URL + '/user', JSON.stringify(data), {
             headers: {
