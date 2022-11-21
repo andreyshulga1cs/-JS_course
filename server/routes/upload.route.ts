@@ -3,7 +3,7 @@ import fileMiddleware from '../middleware/file';
 
 const uploadRouter = Router();
 
-uploadRouter.post('/upload', fileMiddleware.single('avatar'), (req: any, res: any) => {
+uploadRouter.post('/upload', fileMiddleware.single('image'), (req: any, res: any) => {
     try {
         if (req.file) {
             res.json(req.file);

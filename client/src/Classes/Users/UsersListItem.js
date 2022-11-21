@@ -7,7 +7,7 @@ export default class UsersListItem {
         
         return `
         <div class="account-wrap__user" data-user-email="${this.user.email}">
-            <div class="photo">
+            <div class="image">
                 <img src="${photoUrl}" alt="">
             </div>
             <ul class="info-list">

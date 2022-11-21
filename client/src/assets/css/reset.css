@@ -20,7 +20,6 @@ button:active:focus,
 button:focus,
 a:hover,
 button:hover {
-  -webkit-transition: .2s;
   transition: .2s;
   outline: 0!important;
   outline-color: transparent!important;
@@ -70,6 +69,5 @@ th {
   border: none;
 }
 *:hover {
-  -webkit-transition: .2s;
   transition: .2s;
 }

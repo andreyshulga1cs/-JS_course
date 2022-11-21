@@ -12,7 +12,7 @@ export default class FormRegister extends Form {
     }
     submit() {
         super.submit();
-        const user = this.user;
+        const user = this.data;
 
         if (this.isValid) {
             if (user.password !== user.password2 && user.password2 !== null) {
@@ -25,8 +25,8 @@ export default class FormRegister extends Form {
                         DbUsers.createUser(user).then(() => {
                             popup.open(`User ${user.email} was added!`);
                             super.reset();
-                        }).catch(error => {
-                            console.log(error);
+                        }).catch(err => {
+                            console.log(err);
                         }).then(() => {
                             popupFormRegister.close();
                         });

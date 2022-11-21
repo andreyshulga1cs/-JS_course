@@ -1,15 +1,15 @@
 import User from '../dbEntities/User';
 import { AppDataSource } from "../data-source";
 
-import TokenController from './token.controller';
-
 const imageToBase64 = require('image-to-base64');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const userRepository = AppDataSource.getRepository(User);
 
 async function prepareUser(user: any) {
     const userInfo = {
+        id: user.id,
         email: user.email,
         age: user.age,
         password: user.password,
@@ -50,7 +50,7 @@ class UserController {
     // }
 
     async createUser(req: any, res: any) {
-        const {email, age, password, sex, tel, avatar} = req.body;
+        const {email, age, password, sex, tel, image} = req.body;
 
         const user = new User();
 
@@ -62,26 +62,19 @@ class UserController {
         user.password = hashPasword || '';
         user.sex = sex || '';
         user.tel = tel || '';
-        user.avatar = avatar || '';
-        user.accessToken = TokenController.generateAccessToken({email}) || '';
+        user.avatar = image || '';
+
+        const accessToken = jwt.sign({email}, process.env.JWT_ACCESS_SECRET, {expiresIn:'30m'});
+        user.accessToken = accessToken || '';
         // user.accessToken = tokens.accessToken || '';
         // user.refreshToken = tokens.refreshToken || '';
 
-        try {
             // await TokenControllerInstance.saveToken(user.id, tokens.refreshToken);
 
             // res.cookie('refreshToken', tokens.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
             
-            const newUser = await userRepository.save(user);
-
-            // res.json({user: newUser, accessToken: tokens.accessToken, refreshToken: tokens.refreshToken});
-            res.json(newUser);
-            // .then((response: any) => res.json(response))
-            // .catch((e: any) => res.json(e))
-        } catch (e: any) {
-            console.log(e);
-            
-        }
+        const newUser = await userRepository.save(user);
+        res.json(newUser);
     }
 
     async getUsers(req: any, res: any) {
@@ -107,7 +100,7 @@ class UserController {
 
     async updateUserByEmail(req: any, res: any) {
         const email = req.params.email;
-        const {age, password, sex, tel, avatar} = req.body;
+        const {age, password, sex, tel, image} = req.body;
 
         const user = await userRepository.findOneBy({
             email: email,
@@ -116,7 +109,11 @@ class UserController {
         user.password = password || '';
         user.sex = sex || '';
         user.tel = tel || '';
-        user.avatar = avatar || '';
+        if (user.avatar && !image) {
+            user.avatar = user.avatar;
+        } else {
+            user.avatar = image || '';
+        }
 
         await userRepository.save(user)
         res.json(user)

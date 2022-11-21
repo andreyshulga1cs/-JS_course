@@ -67,40 +67,8 @@ document.addEventListener('click', e => {
 });
 
 UserStatus.setInitialHeaderButtons();
-DbUsers.getUsers().then(res => {
-    console.log(1);
-    console.log(res);
-}).catch(error => {
-    console.log(2);
-    console.log(error);
-});
-
-// DbUsers.getUserByEmail('1@gmail.com').then(res => {
-//     console.log(1);
+// DbUsers.getUsers().then(res => {
 //     console.log(res);
 // }).catch(error => {
-//     console.log(2);
 //     console.log(error);
 // });
-
-// let url = 'http://localhost:5000/uploads/2022-11-10T16-41-19.257Z-105897632-1557241558937avatar-e1541360922907.jpg';
-
-// const getBase64FromUrl = async (url) => {
-//     const data = await fetch(url);
-//     const blob = await data.blob();
-//     return new Promise((resolve) => {
-//         const reader = new FileReader();
-//         reader.readAsDataURL(blob); 
-//         reader.onloadend = () => {
-//             const base64data = reader.result;   
-//             resolve(base64data);
-//         }
-//     });
-// }
-  
-// getBase64FromUrl(url).then(console.log);
-
-// toDataUrl(url, function(myBase64) {
-//     console.log(myBase64); // myBase64 is the base64 string
-// });
-// console.log(toDataUrl(url));

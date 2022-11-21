@@ -1,4 +1,6 @@
 import "reflect-metadata"
+import Comment from "./dbEntities/Comment"
+import Post from "./dbEntities/Post"
 import User from "./dbEntities/User"
 import { DataSource } from "typeorm";
 
@@ -11,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: "js_course",
     synchronize: true,
     logging: false,
-    entities: [User],
+    entities: [Comment, Post, User],
     migrations: [],
     subscribers: [],
 })

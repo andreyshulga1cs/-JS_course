@@ -20,7 +20,6 @@ button:active:focus,
 button:focus,
 a:hover,
 button:hover {
-  -webkit-transition: .2s;
   transition: .2s;
   outline: 0!important;
   outline-color: transparent!important;
@@ -70,21 +69,27 @@ th {
   border: none;
 }
 *:hover {
-  -webkit-transition: .2s;
   transition: .2s;
+}
+h1 {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 32px;
+  font-weight: 700;
 }
 body {
   min-height: 100vh;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: column;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -95,13 +100,9 @@ header {
   background-color: #7474e9;
 }
 header .container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 header .header-menu ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 header .header-menu ul li {
@@ -142,11 +143,8 @@ main {
   padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .cols {
   height: 100%;
@@ -154,11 +152,8 @@ main {
   width: calc(100% + 40px);
   margin-left: -20px;
   margin-right: -20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .col {
   width: calc(100% / 2 - 40px);
@@ -167,11 +162,7 @@ main {
   min-height: 100%;
 }
 form {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 form h3 {
   font-size: 32px;
@@ -183,6 +174,19 @@ form .input-wrap {
   margin-top: 25px;
   font-size: 20px;
 }
+form .input-wrap .image {
+  margin-bottom: 30px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+form .input-wrap .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 form h4 {
   margin-bottom: 10px;
 }
@@ -190,7 +194,8 @@ form .disable {
   pointer-events: none;
   opacity: .5;
 }
-form input {
+form input,
+form textarea {
   width: 100%;
   padding: 0 30px;
   height: 40px;
@@ -198,20 +203,20 @@ form input {
   font-size: 16px;
   font-weight: 500;
   border-radius: 10px;
-  border: 1px solid #7613e8;
+  border: 2px solid #7613e8;
 }
-form input.invalid {
+form input.invalid,
+form textarea.invalid {
   border-color: red;
+}
+form textarea {
+  height: 300px;
 }
 form .checkbox-wrap {
   cursor: pointer;
   margin-right: 14px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 form .checkbox-wrap .checkbox-el {
   margin-left: 6px;
@@ -223,7 +228,6 @@ form .checkbox-wrap .checkbox-el {
   display: inline-block;
 }
 form .checkbox-wrap .checkbox-el:before {
-  -webkit-transition: .2s;
   transition: .2s;
   opacity: 0;
   content: '';
@@ -233,19 +237,16 @@ form .checkbox-wrap .checkbox-el:before {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background-color: #6969e0;
   border-radius: 50%;
 }
 form .checkbox-wrap input:checked + .checkbox-el:before {
-  -webkit-transition: .2s;
   transition: .2s;
   opacity: 1;
 }
 form button {
   margin-top: 25px;
-  -webkit-transition: .2s;
   transition: .2s;
   padding: 0 30px;
   height: 50px;
@@ -261,7 +262,6 @@ form button:hover {
 }
 .popup,
 .popup-form {
-  -webkit-transition: .4s;
   transition: .4s;
   pointer-events: none;
   opacity: 0;
@@ -275,8 +275,6 @@ form button:hover {
 }
 .popup form,
 .popup-form form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .popup__overlay,
@@ -289,15 +287,12 @@ form button:hover {
   height: 100%;
   background-color: #000;
   opacity: .6;
-  -webkit-filter: blur(0.4);
-          filter: blur(0.4);
+  filter: blur(0.4);
 }
 .popup__window,
 .popup-form__window {
-  -webkit-transition: .4s;
   transition: .4s;
-  -webkit-transform: translate(-50%, -50%) scale(0.7);
-          transform: translate(-50%, -50%) scale(0.7);
+  transform: translate(-50%, -50%) scale(0.7);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -334,17 +329,14 @@ form button:hover {
 .popup.open,
 .popup-form.open {
   pointer-events: initial;
-  -webkit-transform: .4s;
-          transform: .4s;
+  transform: .4s;
   opacity: 1;
   visibility: visible;
 }
 .popup.open .popup__window,
 .popup-form.open .popup__window {
-  -webkit-transition: .4s;
   transition: .4s;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 .popup-form {
   z-index: 3;
@@ -355,35 +347,12 @@ footer {
   margin-top: auto;
   width: 100%;
 }
-.photo {
-  margin-bottom: 30px;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.photo img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
 .account-wrap {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .account-wrap__user {
   max-width: 100%;
@@ -394,6 +363,19 @@ footer {
   padding-bottom: 30px;
   border-bottom: 2px solid #000;
   margin-bottom: 30px;
+}
+.account-wrap__user .image {
+  margin-bottom: 30px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.account-wrap__user .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .account-wrap__user b {
   color: blue;
@@ -406,7 +388,6 @@ footer {
 }
 .account-wrap__user .button {
   cursor: pointer;
-  -webkit-transition: .2s;
   transition: .2s;
   position: absolute;
   right: 0;
@@ -430,12 +411,8 @@ footer {
 }
 .preloader {
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-size: 30px;
 }
 .preloader:before {
@@ -445,27 +422,14 @@ footer {
   width: 50px;
   height: 50px;
   border: 4px dashed #000;
-  -webkit-animation: preloader 3s infinite;
-          animation: preloader 3s infinite;
-}
-@-webkit-keyframes preloader {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+  animation: preloader 3s infinite;
 }
 @keyframes preloader {
   from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 .about-block {
@@ -473,4 +437,131 @@ footer {
   background: #a9a9f5;
   padding: 30px;
   border-radius: 20px;
+}
+section.blog form {
+  margin-top: 50px;
+}
+.blog-wrap {
+  margin-top: 20px;
+  width: 100%;
+}
+.blog-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.blog-list__item {
+  position: relative;
+  margin-top: 40px;
+  width: calc(33.33% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.blog-list__item .author {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: #fff;
+}
+.blog-list__item .title {
+  margin-top: 20px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.blog-list__item .desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+}
+.blog-list__item .thumbnail {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+.blog-list__item .thumbnail:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.blog-list__item .thumbnail img {
+  transition: .3s;
+  z-index: -2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.blog-list__item .thumbnail:hover img {
+  transition: .3s;
+  width: 110%;
+  height: 110%;
+}
+section.blog-single {
+  margin-top: -90px;
+}
+section.blog-single .thumbnail {
+  margin-bottom: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  color: #ededed;
+}
+section.blog-single .thumbnail:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+section.blog-single .thumbnail h1 {
+  width: auto;
+}
+section.blog-single .thumbnail img {
+  z-index: -2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+section.blog-single .content {
+  width: calc(100% - 400px);
+  padding-right: 50px;
+  font-size: 22px;
+}
+section.blog-single .comments {
+  width: 400px;
+}
+section.blog-single .comments-list__item {
+  margin-top: 30px;
+}
+section.blog-single .comments-list__item .author {
+  font-weight: 700;
+  font-size: 20px;
 }

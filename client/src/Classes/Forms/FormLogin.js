@@ -3,8 +3,6 @@ import Form from "./Form.js";
 import UserStatus from "../Users/UserStatus.js";
 import DbUsers from "../db/DbUsers.js";
 
-// import '../../../node_modules/jsonwebtoken/decode.js';
-
 import UsersList from "../Users/UsersList.js";
 const UsersListInstance = new UsersList('.account-wrap');
 
@@ -17,10 +15,9 @@ export default class FormLogin extends Form {
     }
     submit() {
         super.submit()
-        const user = this.user;
+        const user = this.data;
 
         if (this.isValid) {
-            // debugger
 
             DbUsers.loginUser({email: user.email, password: user.password}).then(res => {
                 if (res.data) {
@@ -37,22 +34,6 @@ export default class FormLogin extends Form {
             }).then(() => {
                 popupFormLogin.close();
             });
-            // DbUsers.getUserByEmail(user.email).then(res => {
-
-            //     // if (res.password === user.password) {
-            //     //     popup.open('You are logged in!');
-
-            //     //     UserStatus.login(user.email);
-            //     //     UsersListInstance.renderUserList();
-            //     //     super.reset(); 
-            //     // } else {
-            //     //     popup.open('Email or Password are wrong!');
-            //     // }
-            // }).catch(error => {
-            //     popup.open(error)
-            // }).then(() => {
-            //     popupFormLogin.close();
-            // });
         }
 
     }
