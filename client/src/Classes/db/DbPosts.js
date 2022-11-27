@@ -44,6 +44,35 @@ class DbPosts {
             return error;
         })
     }
+    // async updatePostById(id, userEmail) {
+    //     return axios.put(SERVER_API_URL + '/post/id/' + id, JSON.stringify(userEmail), {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }).then(res => {
+    //         return res;
+    //     }).catch(error => {
+    //         return error;
+    //     })
+    // }
+    async toggleLike(id, userEmail) {
+        return axios.post(SERVER_API_URL + '/like/id/' + id, JSON.stringify({userEmail}), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            return res;
+        }).catch(error => {
+            return error;
+        })
+    }
+    async getCountLikes(id) {
+        return axios.get(SERVER_API_URL + '/like/id/' + id).then(res => {
+            return res.data;
+        }).catch(error => {
+            return error;
+        })
+    }
 }
 const DbPostsInstance = new DbPosts();
 export default DbPostsInstance;

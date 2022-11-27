@@ -8,6 +8,10 @@ export default class PageBlogSingle extends Page {
     constructor() {
         super();
 
+        if (!PageBlogSingle._instance) {
+            PageBlogSingle._instance = this;
+        }
+        return PageBlogSingle._instance;
     }
     render() {
         const postId = window.location.href.split('id=')[1];

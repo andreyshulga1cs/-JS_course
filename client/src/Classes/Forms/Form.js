@@ -16,7 +16,7 @@ export default class Form {
 
             this.fileInputs = this.selector.querySelectorAll('.input-wrap [type="file"]');
             this.imagePath = '';
-            this.imageDOM = document.querySelector('.input-wrap .image img');
+            this.imageDOM = this.selector.querySelector('.input-wrap .image img');
 
             this.selector.addEventListener('submit', e => {
                 e.preventDefault();
@@ -38,7 +38,6 @@ export default class Form {
                             }
                         }).then(res => {
                             this.imagePath = SERVER_URL + '/uploads/' + res.data.filename;
-            
                             this.imageDOM.src = this.imagePath;
                         }).catch(error => {
                             console.log(error);

@@ -1,10 +1,13 @@
 @import "reset.less";
 
-@main-color: rgb(118, 19, 232);
-
+@main-color: #7613e8;
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
 h1 {
-  width: 100%;
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 700;
 }
 h2 {
@@ -15,15 +18,24 @@ h3 {
   font-size: 32px;
   font-weight: 700;
 }
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 50px;
+  height: 50px;
+  border-radius: 14px;
+  padding: 0 30px;
+  background-color: @main-color;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
 body {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
 }
 header {
   height: 100px;
@@ -72,8 +84,8 @@ main {
   height: 100%;
   min-height: 100%;
   max-width: 1520px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 50px;
+  padding-left: 50px;
   margin-right: auto;
   margin-left: auto;
   display: flex;
@@ -140,7 +152,7 @@ form {
     }
   }
   textarea {
-    height: 300px;
+    height: 200px;
   }
   .checkbox-wrap {
     cursor: pointer;
@@ -268,7 +280,45 @@ footer {
   margin-top: auto;
   width: 100%;
 }
-
+section.account {
+  .container {
+    align-items: flex-start;
+  }
+  .sidebar {
+    position: sticky;
+    top: 30px;
+    left: 0;
+    padding: 30px 20px;
+    width: 370px;
+    background-color: @main-color;
+    border-radius: 20px;
+    li {
+      cursor: pointer;
+      margin-top: 20px;
+      color: #fff;
+      font-size: 22px;
+      font-size: 700;
+      &:first-child {
+        margin-top: 0;
+      }
+      span {
+        pointer-events: none;
+      }
+    }
+  }
+  .main-content {
+    margin-left: 30px;
+    padding-left: 30px;
+    border-left: 3px solid #acacac;
+    width: ~'calc(100% - 400px)';
+    [data-tab] {
+      display: none;
+      &:first-child {
+        display: block;
+      }
+    }
+  }
+}
 .account-wrap {
   width: 100%;
   display: flex;
@@ -362,6 +412,10 @@ footer {
   border-radius: 20px;
 }
 section.blog {
+  .container {
+    justify-content: space-between;
+    align-items: center;
+  }
   form {
     margin-top: 50px;
   }
@@ -383,24 +437,73 @@ section.blog {
     width: ~'calc(33.33% - 40px)';
     margin-left: 20px;
     margin-right: 20px;
+    .button {
+      z-index: 1;
+      cursor: pointer;
+      transition: .2s;
+      position: absolute;
+      right: 10px;
+      top: 18px;
+      width: 25px;
+      height: 25px;
+      background-size: 100%;
+      background-origin: center;
+      background-repeat: no-repeat;
+      filter: invert(1);
+      &.edit-post {
+        background-image: url(../img/edit.png);
+        background-size: 80%;
+      }
+      &.remove-post {
+        background-image: url(../img/remove.png);
+        top: 50px;
+      }
+      &:hover {
+        opacity: .7;
+      }
+    }
+    .like {
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      left: 20px;
+      top: 166px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .count {
+        pointer-events: none;
+        margin-right: 5px;
+        margin-bottom: -3px;
+        font-size: 19px;
+        color: #fff;
+      }
+      path {
+        transition: .2s;
+      }
+      svg {
+        pointer-events: none;
+        width: 16px;
+        height: 16px;
+      }
+      &.active {
+        path {
+          transition: .2s;
+          fill: @main-color;
+        }
+      }
+      &:hover {
+        opacity: .8;
+      }
+    }
     .author {
       position: absolute;
       left: 20px;
       top: 20px;
       color: #fff;
     }
-    .title {
-      margin-top: 20px;
-      font-size: 26px;
-      font-weight: 700;
-    }
-    .desc {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-top: 10px;
-    }
     .thumbnail {
+      display: block;
       overflow: hidden;
       position: relative;
       width: 100%;
@@ -433,6 +536,38 @@ section.blog {
           width: 110%;
           height: 110%;
         }
+      }
+    }
+    .title {
+      display: block;
+      margin-top: 20px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .desc {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 10px;
+    }
+  }
+  &.preview {
+    flex-direction: column;
+    align-items: flex-start;
+    .blog-list__item {
+      width: auto;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      .thumbnail {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .title {
+        margin-top: 0;
+        font-weight: 18;
       }
     }
   }

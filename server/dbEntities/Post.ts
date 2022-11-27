@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToOne, OneToMany, ManyToMany } from "typeorm"
 import User from "./User"
 import Comment from "./Comment"
 
@@ -21,4 +21,12 @@ export default class Post {
 
     @OneToMany(() => Comment, (comment) => comment.post)
     comments: Comment[]
+    
+    // @ManyToMany(() => User)
+    // @JoinTable()
+    // likes: User[]
+    
+    @ManyToMany(() => User, (user) => user.likes)
+    @JoinTable()
+    likes: User[]
 }

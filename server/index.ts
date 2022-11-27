@@ -11,8 +11,9 @@ import { AppDataSource } from "./data-source";
 
 import uploadRouter from './routes/upload.route';
 import userRouter from './routes/user.route';
-import postRouter from './routes/post.route.js';
+import postRouter from './routes/post.route';
 import commentRouter from './routes/comment.route';
+// import likePostRouter from './routes/likePost.route';
 import { urlencoded, json } from 'express';
 
 const __dirname = path.resolve();
@@ -49,7 +50,11 @@ try {
     app.use('/api', userRouter);
     app.use('/api', postRouter);
     app.use('/api', commentRouter);
+    // app.use('/api', likePostRouter);
 
 } catch (e) {
     console.log(e);
 }
+
+
+// passport js для jwt token

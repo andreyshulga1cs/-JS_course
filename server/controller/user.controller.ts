@@ -17,6 +17,8 @@ async function prepareUser(user: any) {
         tel: user.tel,
         avatar: user.avatar,
         accessToken: user.accessToken,
+        likes: user.likes,
+        posts: user.posts,
     };
   
     if (!userInfo.avatar) {
@@ -78,7 +80,12 @@ class UserController {
     }
 
     async getUsers(req: any, res: any) {
-        const users = await userRepository.find();
+        const users = await userRepository.find({
+            relations: {
+                posts: true,
+                likes: true
+            }
+        });
       
         const usersResponse = await Promise.all(users.map((user) => prepareUser(user)));
       
@@ -86,12 +93,18 @@ class UserController {
     }
 
     async getUserByEmail(req: any, res: any) {
-        const user = await userRepository.findOneBy({
-            email: req.params.email,
+        const user = await userRepository.find({
+            where: {
+                email: req.params.email
+            },
+            relations: {
+                posts: true,
+                likes: true
+            }
         });
-
-        if (user) {
-            const userResponse = await prepareUser(user);
+        
+        if (user.length > 0) {
+            const userResponse = await prepareUser(user[0]);
             res.json(userResponse);
         } else {
             res.json('');
